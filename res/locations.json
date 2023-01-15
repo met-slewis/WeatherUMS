@@ -1,0 +1,76 @@
+{
+  "locations": [
+    {
+      "locationId": "0",
+      "name": "All Locations",
+      "lat": 0.0,
+      "long": 0.0
+    },
+    {
+      "locationId": "1",
+      "name": "84 Washington Ave",
+      "lat": -41.3067,
+      "long": 174.7665
+    },
+    {
+      "locationId": "2",
+      "name": "Wellington College",
+      "lat": -41.3033,
+      "long": 174.782
+    },
+    {
+      "locationId": "3",
+      "name": "Makara Beach",
+      "lat": -41.2195,
+      "long": 174.7133
+    },
+    {
+      "locationId": "4",
+      "name": "Whitby Lakes",
+      "lat": -41.1165,
+      "long": 174.8939
+    },
+    {
+      "locationId": "5",
+      "name": "Brora Crescent Papakowhai",
+      "lat": -41.1111,
+      "long": 174.8645
+    },
+    {
+      "locationId": "6",
+      "name": "Beachlands",
+      "lat": -36.879,
+      "long": 175.0052
+    },
+    {
+      "locationId": "7",
+      "name": "Palm Beach, Waiheke",
+      "lat": -36.7801,
+      "long": 175.0435
+    },
+    {
+      "locationId": "8",
+      "name": "Geeky Gecko, Dunedin",
+      "lat": -45.8793,
+      "long": 170.5001
+    },
+    {
+      "locationId": "9",
+      "name": "30 Papawai Rd, Greytown",
+      "lat": -41.0895,
+      "long": 175.4573
+    },
+    {
+      "locationId": "10",
+      "name": "Seabridge House",
+      "lat": -41.2817,
+      "long": 174.7778
+    },
+    {
+      "locationId": "11",
+      "name": "Keneperu",
+      "lat": -41.1460,
+      "long": 174.8341
+    }
+  ]
+}

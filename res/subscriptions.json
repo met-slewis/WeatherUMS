@@ -1,0 +1,48 @@
+{
+  "clients" : [
+    {
+      "clientId": "1",
+      "clientName" : "Simon@Work",
+      "services": [
+        {
+          "service" : "warnings",
+          "locations": ["0"]
+        },
+        {
+          "service":"forecasts",
+          "locations": ["1","10"]
+        }
+      ]
+    },
+    {
+      "clientId": "6",
+      "clientName" : "Simon@Home",
+      "services": [
+        {
+          "service" : "warnings",
+          "locations": ["1"]
+        },
+        {
+          "service" : "forecasts",
+          "locations": ["1", "10"]
+        }
+      ]
+    },
+    {
+      "clientId": "4",
+      "clientName" : "Gilli",
+      "services": [
+        {
+          "service" : "warnings",
+          "locations": ["1", "11"]
+        },
+        {
+          "service" : "forecasts",
+          "locations": ["1", "11"]
+        }
+      ]
+    }
+  ]
+}
+
+
