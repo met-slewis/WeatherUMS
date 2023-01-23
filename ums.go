@@ -122,6 +122,22 @@ func CreateWarningsRuntime(clients ClientsMapType, locations LocationsType, subs
 	return warnings
 }
 
+func ClientsForService(service string) ClientsType {
+	subscribers := make(ClientsType, 0)
+	subscriptions := ReadSubscriptions()
+	subs := ReadClients()
+
+	for _, client := range subscriptions.Clients {
+		for _, svc := range client.Services {
+			if svc.Service == service {
+				subscribers = append(subscribers, subs.Clients[client.ClientId])
+			}
+		}
+	}
+
+	return subscribers
+}
+
 /*
 func CreateSubscriptions(clients ClientsType, locations LocationsType) RuntimeLocations {
 
