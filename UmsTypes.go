@@ -1,4 +1,6 @@
-package main
+package WeatherUMS
+
+import "github.com/MetServiceDev/WeatherEventLib"
 
 const (
 	warningsService = "warnings"
@@ -32,9 +34,10 @@ type ActiveLocationType struct {
 }
 
 // ClientsType  The clients (users)
-//type ClientsType struct {
-//  Clients []ClientType `json:"clients"`
-//}
+//
+//	type ClientsType struct {
+//	 Clients []ClientType `json:"clients"`
+//	}
 type ClientsType []ClientType
 
 type ClientsMapType struct {
@@ -50,18 +53,6 @@ type ClientType struct {
 	//Subscriptions []string `json:"subscriptions"`
 }
 
-// LocationsType  The list of possible locations
-type LocationsType struct {
-	Locations map[string]LocationType `json:"locations"`
-}
-
-type LocationType struct {
-	LocationId string  `json:"locationId"`
-	Name       string  `json:"name"`
-	Lat        float32 `json:"lat"`
-	Long       float32 `json:"long"`
-}
-
 // RuntimeLocations  Generated object with
 // an entry for each of the locations we are interested in
 // for a service.  Can save as json if that turns out to be
@@ -75,8 +66,8 @@ type RtServiceType struct {
 }
 
 type RtLocationType struct {
-	Location LocationType          `json:"location"`
-	Clients  map[string]ClientType `json:"clients"`
+	Location WeatherEventLib.LocationType `json:"location"`
+	Clients  map[string]ClientType        `json:"clients"`
 }
 
 type WarningsRuntime struct {
@@ -84,8 +75,8 @@ type WarningsRuntime struct {
 }
 
 type LocationRuntime struct {
-	Location LocationType `json:"location"`
-	Clients  []ClientType `json:"clients"`
+	Location WeatherEventLib.LocationType `json:"location"`
+	Clients  []ClientType                 `json:"clients"`
 }
 
 type ForecastsRuntime WarningsRuntime

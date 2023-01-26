@@ -1,7 +1,8 @@
-package main
+package WeatherUMS
 
 import (
 	"encoding/json"
+	lib "github.com/MetServiceDev/WeatherEventLib"
 	log "github.com/sirupsen/logrus"
 	"os"
 )
@@ -72,10 +73,10 @@ func ReadSubscriptions() SubscriptionsType {
 }
 
 type TmpLocationsType struct {
-	Locations []LocationType `json:"locations"`
+	Locations []lib.LocationType `json:"locations"`
 }
 
-func ReadLocations() LocationsType {
+func ReadLocations() lib.LocationsType {
 	locationsData, err := os.ReadFile(locationsFile)
 	DoError(log.FatalLevel, "Error reading locations data. %s", err)
 
@@ -83,8 +84,8 @@ func ReadLocations() LocationsType {
 	err = json.Unmarshal(locationsData, &locations)
 	DoError(log.ErrorLevel, "Unable to unmarshall into LocationsType", err)
 
-	locationsMap := LocationsType{
-		Locations: make(map[string]LocationType),
+	locationsMap := lib.LocationsType{
+		Locations: make(map[string]lib.LocationType),
 	}
 
 	for _, loc := range locations.Locations {
@@ -93,7 +94,11 @@ func ReadLocations() LocationsType {
 	return locationsMap
 }
 
-func CreateWarningsRuntime(clients ClientsMapType, locations LocationsType, subscriptions SubscriptionsType) WarningsRuntime {
+func GetAllLocations() lib.LocationsType {
+	return ReadLocations()
+}
+
+func CreateWarningsRuntime(clients ClientsMapType, locations lib.LocationsType, subscriptions SubscriptionsType) WarningsRuntime {
 
 	warnings := WarningsRuntime{
 		Locations: make(map[string]*LocationRuntime, 0),
