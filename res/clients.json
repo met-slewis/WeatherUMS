@@ -1,30 +1,84 @@
 [
   {
-    "clientId":"1",
+    "clientId": "1",
     "name": "Simon@Work",
     "phone": "+64211655295",
-    "emailAddress" : "simon.lewis@metservice.com",
-    "locationIds": ["1", "11", "6"],
-    "subscriptions" : ["warnings", "forecasts"]
+    "emailAddress": "simon.lewis@metservice.com",
+    "locationIds": [
+      "1",
+      "11",
+      "6"
+    ],
+    "subscriptions": [
+      "warnings",
+      "forecasts"
+    ]
   },
   {
-    "clientId":"6",
+    "clientId": "6",
     "name": "Simon@Home",
     "phone": "+64211655295",
-    "emailAddress" : "simon@myhat.net",
-    "locationIds": ["1"],
-    "subscriptions" : ["warnings", "forecasts"]
+    "emailAddress": "simon@myhat.net",
+    "locationIds": [
+      "1"
+    ],
+    "subscriptions": [
+      "warnings",
+      "forecasts"
+    ]
   },
   {
-    "clientId":"7",
+    "clientId": "7",
     "name": "Stephanie Raill",
     "phone": "123456",
-    "emailAddress" : "stephanie.raill@metservice.com",
-    "locationIds": ["10"],
-    "subscriptions" : ["warnings"]
+    "emailAddress": "stephanie.raill@metservice.com",
+    "locationIds": [
+      "10"
+    ],
+    "subscriptions": [
+      "warnings"
+    ]
   },
-  { "clientId":"2", "name": "Andrew", "phone": "+6421803435",  "emailAddress" : "", "locationIds": ["9"],"subscriptions" : [] },
-  { "clientId":"3", "name": "Matt",   "phone": "+64275700003", "emailAddress" : "", "locationIds": ["3", "10"],"subscriptions" : [] },
-  { "clientId":"4", "name": "Gilli",  "phone": "+6421623306",  "emailAddress" : "gilli@ohmyhat.com", "locationIds": ["1", "11"],"subscriptions" : [] },
-  { "clientId":"5", "name": "Joseph", "phone": "+64299203843", "emailAddress" : "", "locationIds": ["5"],"subscriptions" : [] }
+  {
+    "clientId": "2",
+    "name": "Andrew",
+    "phone": "+6421803435",
+    "emailAddress": "andrew@strawhouse.co.nz",
+    "locationIds": [
+      "9"
+    ],
+    "subscriptions": []
+  },
+  {
+    "clientId": "3",
+    "name": "Matt",
+    "phone": "+64275700003",
+    "emailAddress": "",
+    "locationIds": [
+      "3",
+      "10"
+    ],
+    "subscriptions": []
+  },
+  {
+    "clientId": "4",
+    "name": "Gilli",
+    "phone": "+6421623306",
+    "emailAddress": "gilli@ohmyhat.com",
+    "locationIds": [
+      "1",
+      "11"
+    ],
+    "subscriptions": []
+  },
+  {
+    "clientId": "5",
+    "name": "Joseph",
+    "phone": "+64299203843",
+    "emailAddress": "",
+    "locationIds": [
+      "5"
+    ],
+    "subscriptions": []
+  }
 ]
