@@ -6,7 +6,7 @@
       "services": [
         {
           "service" : "warnings",
-          "locations": ["0"]
+          "locations": ["*"]
         },
         {
           "service":"forecasts",

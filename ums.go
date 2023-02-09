@@ -8,9 +8,10 @@ import (
 )
 
 const (
-	clientsFile       = "./res/clients.json"
-	locationsFile     = "./res/locations.json"
-	subscriptionsFile = "./res/subscriptions.json"
+	resDir            = "../commonRes/"
+	clientsFile       = resDir + "clients.json"
+	locationsFile     = resDir + "locations.json"
+	subscriptionsFile = resDir + "subscriptions.json"
 )
 
 func DoError(level log.Level, message string, err error) {

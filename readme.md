@@ -2,6 +2,11 @@
 
 Used for the POC and testing purposes.
 
+See up to date examples in the 'res' folder
+
+Next:  
+put the various files in a bucket
+
 ## User / Client
 ```json
 {
