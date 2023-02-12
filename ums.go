@@ -1,17 +1,21 @@
 package WeatherUMS
 
 import (
+	"bytes"
+	"context"
 	"encoding/json"
 	lib "github.com/MetServiceDev/WeatherEventLib"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
 	log "github.com/sirupsen/logrus"
 	"os"
 )
 
 const (
 	resDir            = "../commonRes/"
-	clientsFile       = resDir + "clients.json"
-	locationsFile     = resDir + "locations.json"
-	subscriptionsFile = resDir + "subscriptions.json"
+	bucketName        = "weather-event-sub"
+	clientsFile       = "clients.json"
+	locationsFile     = "locations.json"
+	subscriptionsFile = "subscriptions.json"
 )
 
 func DoError(level log.Level, message string, err error) {
@@ -34,9 +38,18 @@ func DoError(level log.Level, message string, err error) {
 // BuildUms  read the json files and construct the Subscriptions object
 func CreateRuntimes() (WarningsRuntime, ForecastsRuntime) {
 
-	clients := ReadClients()
-	locations := ReadLocations()
-	subscriptions := ReadSubscriptions()
+	clients, err := ReadClients()
+	if err != nil {
+		// TODO
+	}
+	locations, err := ReadLocations()
+	if err != nil {
+		// TODO
+	}
+	subscriptions, err := ReadSubscriptions()
+	if err != nil {
+		// TODO
+	}
 
 	warningsRt := CreateWarningsRuntime(clients, locations, subscriptions)
 	forecastsRuntime := ForecastsRuntime{}
@@ -44,7 +57,8 @@ func CreateRuntimes() (WarningsRuntime, ForecastsRuntime) {
 	return warningsRt, forecastsRuntime
 }
 
-func ReadClients() ClientsMapType {
+func ReadClients_file() ClientsMapType {
+
 	clientData, err := os.ReadFile(clientsFile)
 	DoError(log.FatalLevel, "Error reading client data. %s", err)
 
@@ -62,22 +76,77 @@ func ReadClients() ClientsMapType {
 	return clientMap
 }
 
-func ReadSubscriptions() SubscriptionsType {
-	subscriptionsData, err := os.ReadFile(subscriptionsFile)
-	DoError(log.FatalLevel, "Error reading subscriptions data. %s", err)
+func ReadClients() (ClientsMapType, error) {
+	log.Infof("Reading from S3, filename=%s", clientsFile)
+	cf := clientsFile
+	bn := bucketName
+	out, err := s3Client.GetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: &bn,
+		Key:    &cf,
+	})
+	defer out.Body.Close()
 
+	if err != nil {
+		log.Errorf("Error reading from S3, fname=%s.  Error=%v", clientsFile, err)
+		return ClientsMapType{}, err
+	}
+
+	buffer := new(bytes.Buffer)
+	_, err = buffer.ReadFrom(out.Body)
+	if err != nil {
+		// TODO error
+	}
+	jsonStr := buffer.Bytes()
+	var clients ClientsType
+	err = json.Unmarshal(jsonStr, &clients)
+	if err != nil {
+		// TODO error
+	}
+
+	clientMap := ClientsMapType{
+		Clients: make(map[string]ClientType, 0),
+	}
+	for _, cl := range clients {
+		clientMap.Clients[cl.ClientId] = cl
+	}
+
+	return clientMap, nil
+}
+
+func ReadSubscriptions() (SubscriptionsType, error) {
+	log.Infof("Reading from S3, filename=%s", subscriptionsFile)
+	sf := subscriptionsFile
+	bn := bucketName
+	out, err := s3Client.GetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: &bn,
+		Key:    &sf,
+	})
+	defer out.Body.Close()
+
+	if err != nil {
+		log.Errorf("Error reading from S3, fname=%s.  Error=%v", subscriptionsFile, err)
+		return SubscriptionsType{}, err
+	}
+
+	buffer := new(bytes.Buffer)
+	_, err = buffer.ReadFrom(out.Body)
+	if err != nil {
+		// TODO error
+	}
+	jsonStr := buffer.Bytes()
 	var subscriptions SubscriptionsType
-	err = json.Unmarshal(subscriptionsData, &subscriptions)
-	DoError(log.ErrorLevel, "Unable to unmarshall into SubscriptionsType", err)
-
-	return subscriptions
+	err = json.Unmarshal(jsonStr, &subscriptions)
+	if err != nil {
+		// TODO error
+	}
+	return subscriptions, nil
 }
 
 type TmpLocationsType struct {
 	Locations []lib.LocationType `json:"locations"`
 }
 
-func ReadLocations() lib.LocationsType {
+func ReadLocations_file() lib.LocationsType {
 	locationsData, err := os.ReadFile(locationsFile)
 	DoError(log.FatalLevel, "Error reading locations data. %s", err)
 
@@ -95,7 +164,41 @@ func ReadLocations() lib.LocationsType {
 	return locationsMap
 }
 
-func GetAllLocations() lib.LocationsType {
+func ReadLocations() (lib.LocationsType, error) {
+	log.Infof("Reading from S3, filename=%s", locationsFile)
+	lf := locationsFile
+	bn := bucketName
+	out, err := s3Client.GetObject(context.TODO(), &s3.GetObjectInput{
+		Bucket: &bn,
+		Key:    &lf,
+	})
+	if err != nil {
+		log.Errorf("Error reading from S3, fname=%s.  Error=%v", locationsFile, err)
+		return lib.LocationsType{}, err
+	}
+	defer out.Body.Close()
+
+	buffer := new(bytes.Buffer)
+	_, err = buffer.ReadFrom(out.Body)
+	if err != nil {
+		// TODO error
+	}
+	jsonStr := buffer.Bytes()
+	var tmpLocations TmpLocationsType
+	err = json.Unmarshal(jsonStr, &tmpLocations)
+	if err != nil {
+		// TODO error
+	}
+	locationsMap := lib.LocationsType{
+		Locations: make(map[string]lib.LocationType),
+	}
+	for _, loc := range tmpLocations.Locations {
+		locationsMap.Locations[loc.LocationId] = loc
+	}
+	return locationsMap, nil
+}
+
+func GetAllLocations() (lib.LocationsType, error) {
 	return ReadLocations()
 }
 
@@ -130,8 +233,14 @@ func CreateWarningsRuntime(clients ClientsMapType, locations lib.LocationsType, 
 
 func ClientsForService(service string) ClientsType {
 	subscribers := make(ClientsType, 0)
-	subscriptions := ReadSubscriptions()
-	subs := ReadClients()
+	subscriptions, err := ReadSubscriptions()
+	if err != nil {
+		// TODO
+	}
+	subs, err := ReadClients()
+	if err != nil {
+		// TODO
+	}
 
 	for _, client := range subscriptions.Clients {
 		for _, svc := range client.Services {

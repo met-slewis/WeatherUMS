@@ -1,48 +1,104 @@
 {
-  "clients" : [
+  "clients": [
     {
       "clientId": "1",
-      "clientName" : "Simon@Work",
+      "clientName": "Simon@Work",
       "services": [
         {
-          "service" : "warnings",
-          "locations": ["*"]
+          "service": "warnings",
+          "locations": [
+            "*"
+          ]
         },
         {
-          "service":"forecasts",
-          "locations": ["1","10"]
+          "service": "forecasts",
+          "locations": [
+            "1",
+            "10"
+          ]
         }
       ]
     },
     {
       "clientId": "6",
-      "clientName" : "Simon@Home",
+      "clientName": "Simon@Home",
       "services": [
         {
-          "service" : "warnings",
-          "locations": ["1"]
+          "service": "warnings",
+          "locations": [
+            "1"
+          ]
         },
         {
-          "service" : "forecasts",
-          "locations": ["1", "10"]
+          "service": "forecasts",
+          "locations": [
+            "1",
+            "10"
+          ]
+        }
+      ]
+    },
+    {
+      "clientId": "7",
+      "clientName": "Steph",
+      "services": [
+        {
+          "service": "warnings",
+          "locations": [
+            "*"
+          ]
         }
       ]
     },
     {
       "clientId": "4",
-      "clientName" : "Gilli",
+      "clientName": "Gilli",
       "services": [
         {
-          "service" : "warnings",
-          "locations": ["1", "11"]
-        },
+          "service": "forecasts",
+          "locations": [
+            "1",
+            "11"
+          ]
+        }
+      ]
+    },
+    {
+      "clientId": "2",
+      "clientName": "Andrew",
+      "services": [
         {
-          "service" : "forecasts",
-          "locations": ["1", "11"]
+          "service": "warnings",
+          "locations": [
+            "*"
+          ]
+        }
+      ]
+    },
+    {
+      "clientId": "8",
+      "clientName": "Greta",
+      "services": [
+        {
+          "service": "warnings",
+          "locations": [
+            "*"
+          ]
+        }
+      ]
+    },
+    {
+      "clientId": "9",
+      "clientName": "Jason",
+      "services": [
+        {
+          "service": "warnings",
+          "locations": [
+            "*"
+          ]
         }
       ]
     }
   ]
 }
-
 

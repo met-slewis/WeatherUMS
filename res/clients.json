@@ -3,82 +3,53 @@
     "clientId": "1",
     "name": "Simon@Work",
     "phone": "+64211655295",
-    "emailAddress": "simon.lewis@metservice.com",
-    "locationIds": [
-      "1",
-      "11",
-      "6"
-    ],
-    "subscriptions": [
-      "warnings",
-      "forecasts"
-    ]
+    "emailAddress": "simon.lewis@metservice.com"
   },
   {
     "clientId": "6",
     "name": "Simon@Home",
     "phone": "+64211655295",
-    "emailAddress": "simon@myhat.net",
-    "locationIds": [
-      "1"
-    ],
-    "subscriptions": [
-      "warnings",
-      "forecasts"
-    ]
+    "emailAddress": "simon@myhat.net"
   },
   {
     "clientId": "7",
     "name": "Stephanie Raill",
-    "phone": "123456",
-    "emailAddress": "stephanie.raill@metservice.com",
-    "locationIds": [
-      "10"
-    ],
-    "subscriptions": [
-      "warnings"
-    ]
+    "phone": "",
+    "emailAddress": "stephanie.raill@metservice.com"
   },
   {
     "clientId": "2",
     "name": "Andrew",
     "phone": "+6421803435",
-    "emailAddress": "andrew@strawhouse.co.nz",
-    "locationIds": [
-      "9"
-    ],
-    "subscriptions": []
+    "emailAddress": "andrew@strawhouse.co.nz"
   },
   {
     "clientId": "3",
     "name": "Matt",
-    "phone": "+64275700003",
-    "emailAddress": "",
-    "locationIds": [
-      "3",
-      "10"
-    ],
-    "subscriptions": []
+    "phone": "+64275700003"
   },
   {
     "clientId": "4",
     "name": "Gilli",
     "phone": "+6421623306",
-    "emailAddress": "gilli@ohmyhat.com",
-    "locationIds": [
-      "1",
-      "11"
-    ],
-    "subscriptions": []
+    "emailAddress": "gilli@ohmyhat.com"
   },
   {
     "clientId": "5",
     "name": "Joseph",
     "phone": "+64299203843",
-    "emailAddress": "",
-    "locationIds": [
-      "5"
-    ],
-    "subscriptions": []
+    "emailAddress": ""
+  },
+  {
+    "clientId": "8",
+    "name": "Greta",
+    "phone": "",
+    "emailAddress": "Drift_wood@xtra.co.nz"
+  },
+  {
+    "clientId": "9",
+    "name": "Jason",
+    "phone": "",
+    "emailAddress": "jdmsmith@xtra.co.nz"
   }
 ]

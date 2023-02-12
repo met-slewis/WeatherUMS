@@ -71,6 +71,24 @@
       "name": "Keneperu",
       "lat": -41.1460,
       "long": 174.8341
+    },
+    {
+      "locationId": "12",
+      "name": "Greta and Jason",
+      "lat": -36.4981,
+      "long": 174.7123
+    },
+    {
+      "locationId": "13",
+      "name": "Jason - work",
+      "lat": -36.8282,
+      "long": 174.7836
+    },
+    {
+      "locationId": "14",
+      "name": "Greta - work",
+      "lat": -36.7992,
+      "long": 174.7578
     }
   ]
 }
