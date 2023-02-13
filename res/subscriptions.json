@@ -58,7 +58,13 @@
           "service": "forecasts",
           "locations": [
             "1",
-            "11"
+            "15"
+          ]
+        },
+        {
+          "service": "warnings",
+          "locations": [
+            "1", "15"
           ]
         }
       ]

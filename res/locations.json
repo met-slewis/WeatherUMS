@@ -89,6 +89,12 @@
       "name": "Greta - work",
       "lat": -36.7992,
       "long": 174.7578
+    },
+    {
+      "locationId": "15",
+      "name": "Porirua City",
+      "lat": -41.1367,
+      "long": 174.8406
     }
   ]
 }
