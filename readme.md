@@ -1,11 +1,14 @@
 # Weather UMS
 
 Used for the POC and testing purposes.
+See up-to-date json examples in the 'res' folder
 
-See up to date examples in the 'res' folder
-
-Next:  
-put the various files in a bucket
+Maintains some lists:  
+- Has a list of 'clients' (users)  
+- Has a list of 'locations' (a named lat/long)  
+- Has a 'subscription' list.  For each client"
+  - which services they subscribe to
+  - what locations they are registered with for each of the services
 
 ## User / Client
 ```json
@@ -14,8 +17,6 @@ put the various files in a bucket
   "name": "Joe", 
   "phone": "+64211655295",
   "emailAddress" : "joe@bloggs.com",
-  "locationIds": ["1", "11", "6"],
-  "subscriptions": ["warnings", "forecasts"]
 }
 ```
 ## Location
@@ -37,28 +38,34 @@ put the various files in a bucket
   ]
 }
 ```
-## Catalog
-```json
-{
-  "services" : [
-    {
-      "id" : 1, 
-      "name" : "warnings"
-    },
-    {
-      "id" : 2,
-      "name" : "forecasts"
-    }
-  ]
-}
-```
+
 ## Subscription
 ```json
 {
-  "subscriptions" : [
+  "clients": [
     {
-      "clientId" : 1,
-      "services" : ["warnings", "forecasts"]
+      "clientId": "1",
+      "clientName": "Simon@Work",
+      "services": [
+        {
+          "service": "warnings",
+          "locations": [
+            "*"
+          ]
+        },
+        {
+          "service": "forecasts",
+          "locations": [
+            "1",
+            "10"
+          ]
+        }
+      ]
+    },
+    {
+      "clientId": "6",
+      "clientName": "Simon@Home",
+      "services": [{}]
     }
   ]
 }

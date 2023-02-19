@@ -95,6 +95,12 @@
       "name": "Porirua City",
       "lat": -41.1367,
       "long": 174.8406
+    },
+    {
+      "locationId": "16",
+      "name": "Andrews Work (AKL)",
+      "lat": -36.8498,
+      "long": 174.7813
     }
   ]
 }

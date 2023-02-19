@@ -6,16 +6,11 @@
       "services": [
         {
           "service": "warnings",
-          "locations": [
-            "*"
-          ]
+          "locations": ["*"]
         },
         {
           "service": "forecasts",
-          "locations": [
-            "1",
-            "10"
-          ]
+          "locations": ["1","10"]
         }
       ]
     },
@@ -25,16 +20,11 @@
       "services": [
         {
           "service": "warnings",
-          "locations": [
-            "1"
-          ]
+          "locations": ["1"]
         },
         {
           "service": "forecasts",
-          "locations": [
-            "1",
-            "10"
-          ]
+          "locations": ["1","10"]
         }
       ]
     },
@@ -44,9 +34,7 @@
       "services": [
         {
           "service": "warnings",
-          "locations": [
-            "*"
-          ]
+          "locations": ["*"]
         }
       ]
     },
@@ -56,16 +44,11 @@
       "services": [
         {
           "service": "forecasts",
-          "locations": [
-            "1",
-            "15"
-          ]
+          "locations": ["1", "15"]
         },
         {
           "service": "warnings",
-          "locations": [
-            "1", "15"
-          ]
+          "locations": ["1", "15"]
         }
       ]
     },
@@ -75,9 +58,7 @@
       "services": [
         {
           "service": "warnings",
-          "locations": [
-            "*"
-          ]
+          "locations": ["9", "16"]
         }
       ]
     },
@@ -87,9 +68,7 @@
       "services": [
         {
           "service": "warnings",
-          "locations": [
-            "*"
-          ]
+          "locations": ["12","14"]
         }
       ]
     },
@@ -99,9 +78,7 @@
       "services": [
         {
           "service": "warnings",
-          "locations": [
-            "*"
-          ]
+          "locations": ["12","13"]
         }
       ]
     }
